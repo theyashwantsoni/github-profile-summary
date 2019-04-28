@@ -1,92 +1,56 @@
-<h2 style="margin: auto;margin-top:15vh;margin-bottom: 25vh;width:30%;text-align: center">Github profile summary</h2>
-<div>
-    <form [formGroup]="userForm" style="margin: auto;margin-bottom: 50vh;width:20%;">
-    <input type="text" formControlName="username" placeholder="github username" style="width:100%;height:40px;padding:5px;border:1px solid black;">
-    <input  type="submit"  (click)="search()" value="search">
-    </form>
- </div>
-    
+<nav class="navbar">
+        <a class="navbar-brand">github api - user repos </a>
+          <form [formGroup]="userForm" class="form-inline">
+              <input class="form-control mr-sm-2" formControlName="username" type="search" placeholder="Search" aria-label="Search">
+              <input  type="submit"  (click)="search()" value="search">
 
-<div class="container" *ngIf="bakwas" id="second">
-  <div class="header">
-    <div class="full-name">
-      <!-- <span class="first-name">John</span>  -->
-      <span class="last-name">{{bakwas.name}}</span>
-    </div>
-    <div class="contact-info">
-      <span class="email">Email: </span>
-      <span class="email-val">{{bakwas.email}}</span>
-      <span class="separator"></span>
-      <span class="phone">Website: </span>
-      <span class="phone-val"><a href="{{bakwas.blog}}">{{bakwas.blog}}</a></span>
-    </div>
-    
-    <div class="about">
-      <span class="position">Bio </span>
-      <span class="desc">
-        {{bakwas.bio}}   
-    </span>
-    </div>
-  </div>
-   <div class="details">
-        <div class="section">
-                <div class="section__title">Currently at</div>
-                <div class="section__list">
-                  <div class="section__list-item">
-                    <div class="left">
-                      <div class="name">{{bakwas.company}}</div>
-                   
-                    </div>
-                
-                  </div>
+          </form>
+</nav>
 
-          
-                </div>
-                
-            </div>
-            <div class="section">
-                    <div class="section__title">Projects & Repos</div> 
-                     <div class="section__list">
-                       <div class="section__list-item" *ngFor="let repo of repos">
-                         <div class="name">{{repo.name}}</div>
-                         <div class="text">
-                             {{repo.description}}
-                         </div>
-                       
-                       <!-- <div class="section__list-item">
-                                  <div class="name">DSP</div>
-                         <div class="text">I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow. <a href="/login">link</a>
-                         </div>
-                       </div> -->
-                     </div>
-                  </div>
-
-
-
-     <div class="section">
-       <div class="section__title">Skills</div>
-       <div class="skills">
-         <div class="skills__item">
-           
-              <div style="font-weight: bold;display:inline-block;" *ngFor="let skil of skills">
-              {{skil}}, 
+<div class="row">
+    <div style="width:60%;display: inline-block;float:left;">
+        <div class="container" *ngIf="bakwas" id="second">
+            <div class="header">
+              <div class="full-name">
+                <span class="last-name">{{bakwas.name}}</span>
               </div>
-            
-         </div>
-         
-       </div>
+              
+              <div class="about">
+                <span class="position" *ngIf="bakwas.bio">Bio </span>
+                <span class="desc">
+                  {{bakwas.bio}}   
+              </span>
+              </div>
+            </div>
+             <div class="details">
+                <div class="section">
+                            <div class="section__title">Projects & Repos </div> 
+                            <hr>
+                               <div class="section__list">
+                                 <div class="section__list-item" *ngFor="let repo of repos;let i = index;">
+                                   <div class="name">{{repo.name}}<button class="givepad" (click)="pickmeup(repo.name)">pick</button></div>
+                                   <div class="text">
+                                      <b style="color:brown;">Stars: {{repo.stargazers_count}}</b> || <b style="color:lightseagreen;">Forks : {{repo.forks}}</b> || <b style="color:goldenrod;">Langs : {{skills[i]}}</b><br>
+                                      <b>description :- </b> {{repo.description}}
+                                   </div>
+                               </div>
+                              </div>
+               </div>
+            </div>
+    </div>
+  
 
-       </div> 
-     <div class="section">
-     <div class="section__title">
-            About This Resume
+</div>
 
-       </div>
-       <div class="section__list">
-         <div class="section__list-item">
-                This résumé is generated automatically using public information from the developer's GitHub account.
-          </div>
-       </div>
-     </div>
-     </div>
-  </div>
+<div style="width:35%;display: inline-block;margin-left:10px;">
+  <div class="container">
+    <div class="section__title"> picked( {{picked.length}} )</div> 
+
+    <div class="section">
+        <p *ngFor="let pick of picked">
+          {{pick}}
+        </p>
+    </div>
+    </div>
+</div>
+</div>

@@ -1,4 +1,6 @@
-
+html{
+  height: 0px;
+}
   .container {
     max-width: 700px;
     background: #fff;
@@ -43,7 +45,29 @@
     margin-right: 10px;
     text-decoration: underline;
   }
-  
+  .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background:#222;
+    color: #f2f2f2;
+}
+
+input[type=search] {
+	background: #555 url(http://hp-proliant.co.uk/qual_images/mob-search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	width: 150px;
+}
+input[type=search]:focus {
+	width: 200px;
+	background-color: #ccc;
+	border-color: #333;
+	border: solid 1px #fff;
+}
   .details {
     line-height: 20px;
   }
@@ -75,11 +99,12 @@
     width: 60%;
   }
   .details .right {
-    tex-align: right;
+    text-align: right;
     width: 39%;
   }
   .details .name {
     font-weight: bold;
+    font-size: 1.3em;
   }
   .details a {
     text-decoration: none;
@@ -106,6 +131,9 @@
   }
   .details .skills__item .right input:checked + label {
     background: #79A9CE;
+  }
+  .givepad{
+    margin-left:20px;
   }
   @media screen and (min-width: 768px) {
 
